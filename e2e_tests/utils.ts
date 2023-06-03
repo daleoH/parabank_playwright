@@ -1,12 +1,22 @@
 const randomstring = require("randomstring");
 
-export const generateName = randomstring.generate({
-    length: 12,
+export const generateFName = randomstring.generate({
+    length: 6,
     charset: 'alphabetic'
 });
 
-export const generateNumber = randomstring.generate({
-    length: 7,
+export const generateLName = randomstring.generate({
+    length: 10,
+    charset: 'alphabetic'
+});
+
+export const generatePhoneNumber = randomstring.generate({
+    length: 8,
+    charset: 'numeric'
+});
+
+export const generateSSN = randomstring.generate({
+    length: 10,
     charset: 'numeric'
 });
 
@@ -15,7 +25,6 @@ export const generateRandomString = function (length, randomString = "") {
     if (randomString.length > length) return randomString.slice(0, length);
     return generateRandomString(length, randomString);
 };
-
 const firstNameArray = [
     "John",
     "Charles",
@@ -23,9 +32,7 @@ const firstNameArray = [
     "Wayne",
     "William"
 ];
-
 const randomFirstName = firstNameArray[Math.floor(Math.random() * firstNameArray.length)];
-
 const lastNameArray = [
     "Wallace",
     "Harris",
@@ -33,5 +40,4 @@ const lastNameArray = [
     "Ford",
     "Norris"
 ];
-
 const randomLastName = lastNameArray[Math.floor(Math.random() * lastNameArray.length)];
