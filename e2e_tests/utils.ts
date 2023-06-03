@@ -1,5 +1,4 @@
-//const randomstring = require("randomstring");
-import {randomstring} from "randomstring";
+const randomstring = require("randomstring");
 
 export const generateName = randomstring.generate({
     length: 12,
