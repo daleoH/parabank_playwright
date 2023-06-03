@@ -4,7 +4,6 @@ const randomstring = require("randomstring");
 
 export const setupAdminPage = async function (page: Page) {
     await page.goto('https://parabank.parasoft.com/parabank/admin.htm');
-    await page.getByRole('button', {name: 'Clean'}).click();
     await page.locator('#accessMode3').check();
     await page.locator('#initialBalance').fill('1000');
     await page.locator('#minimumBalance').fill('100');

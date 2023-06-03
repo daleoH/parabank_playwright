@@ -2,14 +2,10 @@ import {test, expect} from "@playwright/test";
 import {
     setupAdminPage,
     generateRandomString,
-    generatePhoneNumber,
-    generateSSN,
-    generateFName,
-    generateLName,
     enterRegistrationAccountDetails
 } from "./utils";
 
-test.describe(" Registration tests", async () => {
+test.describe("Suite of Registration tests", async () => {
     //this will be used as a test hook to be run on each test to ensure correct test set up
     test.beforeEach(async ({page}) => {
         await test.step('setup admin page', async () => {
@@ -17,13 +13,8 @@ test.describe(" Registration tests", async () => {
         });
     });
 
-    /*    test.afterEach(async ({page}) => {
-            await page.getByRole('link', { name: 'Log Out' }).click();
-        });*/
     test("User attempts to register account without entering mandatory data", async ({page,baseURL}) => {
         await test.step('Navigate to registration page and click register without entering data', async () => {
-            //navigate to parabank url, baseurl stored in config file
-            //await page.goto(baseURL);
             //click on the register link followed by the register button without entering any data on /register.htm page
             await page.getByRole('link', {name: 'Register'}).click();
             await page.getByRole('button', {name: 'Register'}).click();
@@ -48,11 +39,8 @@ test.describe(" Registration tests", async () => {
         });
     });
 
-
     test("User enters incorrect confirmation password - mismatch", async ({page,baseURL}) => {
         await test.step('Navigate to registration page and enter different passwords', async () => {
-            //navigate to parabank url, baseurl stored in config file
-            //await page.goto(baseURL + 'register.htm');
             //click on the register link followed by the register button without entering any data on /register.htm page
             await page.getByRole('link', {name: 'Register'}).click();
         });
@@ -68,12 +56,9 @@ test.describe(" Registration tests", async () => {
         });
     });
 
-    test("Successfully Register Account", async ({page,baseURL}) => {
+    test("Successfully Register Account @smoke", async ({page,baseURL}) => {
 
         await test.step('Navigate to registration page', async () => {
-            //navigate to parabank url, baseurl stored in config file
-            //await page.goto( baseURL + 'register.htm')
-
             //click on the register link followed by the register button without entering any data on /register.htm page
             await page.getByRole('link', {name: 'Register'}).click();
         });
@@ -83,7 +68,7 @@ test.describe(" Registration tests", async () => {
         });
 
         await test.step('User verifies account is created', async () => {
-            //navigate to parabank url, baseurl stored in config file
+            //check the account is created by the text on the page
             await expect (page.getByText('Your account was created successfully. You are now logged in.')).toBeVisible();
         });
     });
