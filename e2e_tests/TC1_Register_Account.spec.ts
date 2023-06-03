@@ -1,5 +1,5 @@
 import {test, expect} from "@playwright/test";
-
+import {generateName, generateNumber, generateRandomString} from "./utils";
 //this will be used as a test hook to be run on each test to ensure correct test set up
 /*test("Register user account setup", async ({page}) => {
     // Go to the starting url before each test.
@@ -11,33 +11,6 @@ import {test, expect} from "@playwright/test";
     await page.locator('#initialBalance').click();
     await page.getByRole('button', {name: 'Submit'}).click();
 });*/
-
-const generateRandomString = function (length, randomString = "") {
-    randomString += Math.random().toString(20).substr(2, length);
-    if (randomString.length > length) return randomString.slice(0, length);
-    return generateRandomString(length, randomString);
-};
-
-const firstNameArray = [
-    "John",
-    "Charles",
-    "Dale",
-    "Wayne",
-    "William"
-];
-
-const randomFirstName = firstNameArray[Math.floor(Math.random() * firstNameArray.length)];
-
-const lastNameArray = [
-    "Wallace",
-    "Harris",
-    "James",
-    "Ford",
-    "Norris"
-];
-
-const randomLastName = lastNameArray[Math.floor(Math.random() * lastNameArray.length)];
-
 
 test("User attempts to register account without entering mandatory data", async ({page}) => {
     //navigate to parabank url, baseurl stored in config file
