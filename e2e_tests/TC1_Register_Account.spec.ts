@@ -13,7 +13,7 @@ test.describe("Suite of Registration tests", async () => {
         });
     });
 
-    test("User attempts to register account without entering mandatory data", async ({page,baseURL}) => {
+    test("User attempts to register account without entering mandatory data", async ({page, baseURL}) => {
         await test.step('Navigate to registration page and click register without entering data', async () => {
             //click on the register link followed by the register button without entering any data on /register.htm page
             await page.getByRole('link', {name: 'Register'}).click();
@@ -39,7 +39,7 @@ test.describe("Suite of Registration tests", async () => {
         });
     });
 
-    test("User enters incorrect confirmation password - mismatch", async ({page,baseURL}) => {
+    test("User enters incorrect confirmation password - mismatch", async ({page, baseURL}) => {
         await test.step('Navigate to registration page and enter different passwords', async () => {
             //click on the register link followed by the register button without entering any data on /register.htm page
             await page.getByRole('link', {name: 'Register'}).click();
@@ -56,7 +56,7 @@ test.describe("Suite of Registration tests", async () => {
         });
     });
 
-    test("Successfully Register Account @smoke", async ({page,baseURL}) => {
+    test("Successfully Register Account @smoke", async ({page, baseURL}) => {
 
         await test.step('Navigate to registration page', async () => {
             //click on the register link followed by the register button without entering any data on /register.htm page
@@ -69,7 +69,8 @@ test.describe("Suite of Registration tests", async () => {
 
         await test.step('User verifies account is created', async () => {
             //check the account is created by the text on the page
-            await expect (page.getByText('Your account was created successfully. You are now logged in.')).toBeVisible();
+            await expect(page.getByText('Your account was created successfully. You are now logged in.')).toBeVisible();
         });
     });
 });
+
