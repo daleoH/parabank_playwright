@@ -20,8 +20,9 @@ export const enterRegistrationAccountDetails = async function (page: Page) {
     await page.locator('[id="customer.phoneNumber"]').fill('077' + generatePhoneNumber);
     await page.locator('[id="customer.ssn"]').fill(generateSSN);
     await page.locator('[id="customer.username"]').fill(generateRandomString(10));
-    await page.locator('[id="customer.password"]').fill('test1');
-    await page.locator('#repeatedPassword').fill('test1');
+    let password = generateRandomString(5);
+    await page.locator('[id="customer.password"]').fill(`${password}`);
+    await page.locator('#repeatedPassword').fill(`${password}`);
 
     await page.getByRole('button', {name: 'Register'}).click();
 };
