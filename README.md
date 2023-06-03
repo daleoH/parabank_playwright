@@ -40,4 +40,10 @@ HTML report:
 
 <img width="671" alt="Test_AllProjects" src="https://github.com/daleoH/parabank_playwright/assets/63591742/bef5317f-842b-4e60-9399-24ca17a94ba0">
 
+## Github Actions
+Here you will find the tests running on CI Github actions after each push/pull request. 
 
+Steps to view:
+1. Navigate to repository (https://github.com/daleoH/parabank_playwright)
+2. Select 'Actions' tab
+3. Select one of the workflow runs to see summary
