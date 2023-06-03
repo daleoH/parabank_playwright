@@ -1,4 +1,31 @@
+import {Page} from "@playwright/test";
+
 const randomstring = require("randomstring");
+
+export const setupAdminPage = async function (page: Page) {
+    await page.goto('https://parabank.parasoft.com/parabank/admin.htm');
+    await page.getByRole('button', {name: 'Clean'}).click();
+    await page.locator('#accessMode3').check();
+    await page.locator('#initialBalance').fill('1000');
+    await page.locator('#minimumBalance').fill('100');
+    await page.getByRole('button', {name: 'Submit'}).click();
+};
+
+export const enterRegistrationAccountDetails = async function (page: Page) {
+    await page.locator('[id="customer.firstName"]').fill(generateFName);
+    await page.locator('[id="customer.lastName"]').fill(generateLName);
+    await page.locator('[id="customer.address.street"]').fill(generateRandomString(9));
+    await page.locator('[id="customer.address.city"]').fill(generateRandomString(10));
+    await page.locator('[id="customer.address.state"]').fill(generateRandomString(15));
+    await page.locator('[id="customer.address.zipCode"]').fill(generateRandomString(7));
+    await page.locator('[id="customer.phoneNumber"]').fill('077' + generatePhoneNumber);
+    await page.locator('[id="customer.ssn"]').fill(generateSSN);
+    await page.locator('[id="customer.username"]').fill(generateRandomString(10));
+    await page.locator('[id="customer.password"]').fill('test1');
+    await page.locator('#repeatedPassword').fill('test1');
+
+    await page.getByRole('button', {name: 'Register'}).click();
+};
 
 export const generateFName = randomstring.generate({
     length: 6,
@@ -25,19 +52,3 @@ export const generateRandomString = function (length, randomString = "") {
     if (randomString.length > length) return randomString.slice(0, length);
     return generateRandomString(length, randomString);
 };
-const firstNameArray = [
-    "John",
-    "Charles",
-    "Dale",
-    "Wayne",
-    "William"
-];
-const randomFirstName = firstNameArray[Math.floor(Math.random() * firstNameArray.length)];
-const lastNameArray = [
-    "Wallace",
-    "Harris",
-    "James",
-    "Ford",
-    "Norris"
-];
-const randomLastName = lastNameArray[Math.floor(Math.random() * lastNameArray.length)];
